@@ -37,7 +37,7 @@ class Album extends Component {
     componentDidMount() {
         this.eventListeners = {
             timeupdate: e => {
-                this.setState({ time: this.audioElement.time} );
+                this.setState({ currentTime: this.audioElement.currentTime} );
             },
             durationchange: e => { 
                 this.setState({ duration: this.audioElement.duration });
@@ -167,15 +167,15 @@ class Album extends Component {
                 </table>
                 <PlayerBar isPlaying={this.state.isPlaying} 
                 currentSong={this.state.currentSong}
-                currentTime={this.formatTime(this.audioElement.currentTime)}
-                duration={this.formatTime(this.audioElement.duration)}
+                currentTime={this.audioElement.currentTime}
+                duration={this.audioElement.duration}
                 volume={this.audioElement.volume}
                 handleSongClick={() => this.handleSongClick(this.state.currentSong)} 
                 handlePrevClick={() => this.handlePrevClick()}
                 handleNextClick={() => this.handleNextClick()}
                 handleTimeChange={(e) => this.handleTimeChange(e)}
                 handleVolumeChange={(e) => this.handleVolumeChange(e)}
-                formatTime={ (time) => this.formatTime(time)}
+                formatTime={ (e) => this.formatTime(e)}
                 />
             </section>
         );
