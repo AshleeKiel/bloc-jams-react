@@ -137,46 +137,51 @@ class Album extends Component {
     render() {
         return (
             <section className="album">
-                <section id="album-info">
-                    <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-                    <div className="album-details">
-                        <h1 id="album-title">{this.state.album.title}</h1>
-                        <h2 className="artist">{this.state.album.artist}</h2>
-                        <div id="release-info">{this.state.album.releaseInfo}</div>
-                    </div>
-                </section>
-            
-                <table id="song-list">
-                    <colgroup>
-                        <col id="song-number-column" />
-                        <col id="song-title-column" />
-                        <col id="song-duration-column" />
-                    </colgroup>
-                    <tbody>
-                        {this.state.album.songs.map( (song, index) => 
-                            <tr className="song" key={index} 
-                                onMouseEnter={() => this.handleMouseEnter(song)}
-                                onMouseLeave={() => this.handleMouseLeave()}
-                                onClick={() => this.handleSongClick(song)} >
-                                <td>{this.hoverIcon(song, index)}</td> 
-                                <td className="song-title">{song.title}</td>
-                                <td className="song-duration">{this.formatTime(song.duration)}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-                <PlayerBar isPlaying={this.state.isPlaying} 
-                currentSong={this.state.currentSong}
-                currentTime={this.audioElement.currentTime}
-                duration={this.audioElement.duration}
-                volume={this.audioElement.volume}
-                handleSongClick={() => this.handleSongClick(this.state.currentSong)} 
-                handlePrevClick={() => this.handlePrevClick()}
-                handleNextClick={() => this.handleNextClick()}
-                handleTimeChange={(e) => this.handleTimeChange(e)}
-                handleVolumeChange={(e) => this.handleVolumeChange(e)}
-                formatTime={ (e) => this.formatTime(e)}
+                <PlayerBar 
+                    isPlaying={this.state.isPlaying} 
+                    currentSong={this.state.currentSong}
+                    currentTime={this.audioElement.currentTime}
+                    duration={this.audioElement.duration}
+                    volume={this.audioElement.volume}
+                    handleSongClick={() => this.handleSongClick(this.state.currentSong)} 
+                    handlePrevClick={() => this.handlePrevClick()}
+                    handleNextClick={() => this.handleNextClick()}
+                    handleTimeChange={(e) => this.handleTimeChange(e)}
+                    handleVolumeChange={(e) => this.handleVolumeChange(e)}
+                    formatTime={ (e) => this.formatTime(e)}
                 />
+
+                <div className="album-column">
+                    <div className="album-row">
+                        <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
+                            <div id="album-details">
+                                <h3> Album: {this.state.album.title} </h3>
+                                <h3> Artist: {this.state.album.artist} </h3>
+                                <p> Release Information: {this.state.album.releaseInfo}</p>
+                            </div>
+                
+                        <table id="song-list">
+                            <colgroup id="songlist-columns">
+                                <col id="song-number-column"/>
+                                <h3> Song List</h3>
+                                <col id="song-title-column" />
+                                <col id="song-duration-column" />
+                            </colgroup>
+                            <tbody>
+                                {this.state.album.songs.map( (song, index) => 
+                                    <tr className="song" key={index} 
+                                        onMouseEnter={() => this.handleMouseEnter(song)}
+                                        onMouseLeave={() => this.handleMouseLeave()}
+                                        onClick={() => this.handleSongClick(song)} >
+                                        <td>{this.hoverIcon(song, index)}</td> 
+                                        <td className="song-title">{song.title}</td>
+                                        <td className="song-duration">{this.formatTime(song.duration)}</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </section>
         );
     }   
