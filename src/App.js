@@ -13,7 +13,7 @@ class App extends Component {
         <header>
           <nav>
             <button className="nav-button"><Link to='/'id="landing-button">Home</Link></button>
-            <div class="divider"/>
+            <div className="divider"/>
             <button className="nav-button"><Link to='/library'id="library-button">Library</Link></button>
           </nav>
           <h1 className="main-title">Bloc Jams</h1>
