@@ -163,7 +163,6 @@ class Album extends Component {
                         <table id="song-list">
                             <colgroup id="songlist-columns">
                                 <col id="song-number-column"/>
-                                <h3> Song List</h3>
                                 <col id="song-title-column" />
                                 <col id="song-duration-column" />
                             </colgroup>

@@ -5,7 +5,7 @@ const Landing = () => (
         <h1 className="hero-title">Turn the music UP!</h1>
 
         <section className="selling-points">
-            <div class='row'>
+            <div className='row'>
                 <div className="point" id="point-1">
                     <h2 className="point-title">Choose<br></br>your<br></br>music</h2>
                     <p className="point-description">The world is full of music.<br></br><br></br>Why should you have to listen to music that someone else chose?</p>
